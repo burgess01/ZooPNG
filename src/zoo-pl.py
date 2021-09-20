@@ -3,8 +3,9 @@ from sly import Lexer, Parser
 from PIL import Image
 
 class ZooLexer(Lexer):
-    tokens = {IMAGES, ANIMAL, IF, THEN, ELSE, DISPLAY, EQEQ}
+    tokens = {IMAGES, ANIMAL, IF, THEN, ELSE, DISPLAY, EQEQ, NUMBER, STRING}
     ignore = ' \t'
+    ignore_comment = r'\#.*'
     literals = {':'}
     #DISPLAY = r"DISPLAY"
     IMAGES = r'images'
@@ -13,7 +14,7 @@ class ZooLexer(Lexer):
     ELSE = r'else'
     DISPLAY = r'display'
     EQEQ = r'=='
-
+    
     @_(r'\d+')
     def NUMBER(self, t):
         t.value = int(t.value)
@@ -24,6 +25,7 @@ class ZooLexer(Lexer):
     @_(r"\".*?\"")
     def STRING(self, t):
         t.value = t.value.strip("\"")
+        return t
 
     @_(r'\n+')
     def newline(self, t):
@@ -33,12 +35,21 @@ class ZooLexer(Lexer):
         print("Illegal character '%s'" % t.value[0])
         self.index += 1
     
+
 class ZooParser(Parser):
     tokens = ZooLexer.tokens
     #print(tokens)
     def __init__(self):
         pass
     
+    @_('NUMBER')
+    def expr(self, p):
+        return ('num', p.NUMBER)
+
+    @_('DISPLAY STRING')
+    def statement(self, p):
+        return p[1]
+
     @_('IF condition THEN statement ELSE statement')
     def statement(self, p):
         #print("Debug", p.condition, p.statement0, p.statement1)
@@ -48,20 +59,38 @@ class ZooParser(Parser):
         else: 
             print(p.statement1)
 
-    @_('expr EQEQ expr')
+    @_('ANIMAL EQEQ expr')
     def condition(self, p):
-        if (p.expr0 == p.expr1): 
+        cat = 4
+        dog = 4
+        horse = 4
+        lion = 4
+        bear = 4
+        bee = 6
+        rooster = 2
+        if (p[0] == "dog" and p.expr[1] == dog):
             return 1
-        else: 
+        elif (p[0] == "cat" and p.expr[1] == cat):
+            return 1
+        elif (p[0] == "horse" and p.expr[1] == horse):
+            return 1
+        elif (p[0] == "lion" and p.expr[1] == lion):
+            return 1
+        elif (p[0] == "bear" and p.expr[1] == bear):
+            return 1
+        elif (p[0] == "bee" and p.expr[1] == bee):
+            return 1
+        elif (p[0] == "rooster" and p.expr[1] == rooster):
+            return 1
+        else:
             return 0
 
     @_('IMAGES ":" ANIMAL')
-    def img_value(self, p):
+    def statement(self, p):
         #print(p[2])
         # displays an image of the animal
         if(p[2] == "cat"):
             print("4 Legs")
-            cat = 4
             im = Image.open(r"../img/cat.jpeg")
             im.show()
             
@@ -86,6 +115,10 @@ class ZooParser(Parser):
 
         elif p[2] == ("bear"):
             print("4 legs")
+    
+    @_('')
+    def statement(self, p):
+        pass
             
 
        
@@ -94,16 +127,11 @@ if __name__ == '__main__':
     #display images of animals
     #display the number of legs they have
     #display traits the animal has
-    cat = 4
-    dog = 4
-    horse = 4
-    lion = 4
-    bear = 4
 
     lexer = ZooLexer()
     parser = ZooParser()
     #parser.parse(lexer.tokenize("images : cat"))
-    parser.parse(lexer.tokenize("if dog == 4 then display \"true\" else display \"false\""))
+    parser.parse(lexer.tokenize("#if dog == 4 then display \"true\" else display \"false\""))
 
     '''
     while True:
