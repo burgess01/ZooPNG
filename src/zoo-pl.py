@@ -63,6 +63,8 @@ class ZooParser(Parser):
         horse = 4
         lion = 4
         bear = 4
+        bee = 6
+        rooster = 2
         if (p[0] == "cat" and p.expr[1] == cat):
             return 1
         if (p[0] == "dog" and p.expr[1] == dog):
@@ -72,6 +74,10 @@ class ZooParser(Parser):
         if (p[0] == "lion" and p.expr[1] == lion):
             return 1
         if (p[0] == "bear" and p.expr[1] == bear):
+            return 1
+        if (p[0] == "bee" and p.expr[1] == bee):
+            return 1
+        if (p[0] == "rooster" and p.expr[1] == rooster):
             return 1
         else:
             return 0
@@ -97,15 +103,23 @@ class ZooParser(Parser):
 
         elif p[2] == ("lion"):
             print("4 legs")
+            im = Image.open(r"../img/lion.jpeg")
+            im.show()
             
         elif p[2] == ("bee"):
             print("6 legs")
+            im = Image.open(r"../img/bee.jpeg")
+            im.show()
 
         elif p[2] == ("rooster"):
             print("2 legs")
+            im = Image.open(r"../img/rooster.jpeg")
+            im.show()
 
         elif p[2] == ("bear"):
             print("4 legs")
+            im = Image.open(r"../img/bear.jpeg")
+            im.show()
     @_('')
     def statement(self, p):
         pass
@@ -113,16 +127,6 @@ class ZooParser(Parser):
 
        
 if __name__ == '__main__':
-    # Class to:
-    #display images of animals
-    #display the number of legs they have
-    #display traits the animal has
-    cat = 4
-    dog = 4
-    horse = 4
-    lion = 4
-    bear = 4
-
     lexer = ZooLexer()
     parser = ZooParser()
     #parser.parse(lexer.tokenize("images : cat"))
@@ -140,5 +144,6 @@ if __name__ == '__main__':
                 #   print(token)
             parser.parse(lex)
     '''
+    
 
             
