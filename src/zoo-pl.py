@@ -48,14 +48,6 @@ class ZooParser(Parser):
     @_('NUMBER')
     def expr(self,p):
         return('num', p.NUMBER)
-    
-    @_('NUMBER')
-    def expr(self, p):
-        return ('num', p.NUMBER)
-
-    @_('DISPLAY STRING')
-    def statement(self, p):
-        return p[1]
 
     @_('IF condition THEN statement ELSE statement')
     def statement(self, p):
