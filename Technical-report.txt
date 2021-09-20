@@ -2,12 +2,47 @@ Add your technical points in the space provided below:
 -----
 Grammar:
 ----------------------------------------------------
-
-
+1)  tokens -> {IMAGES, ANIMAL, IF, THEN, ELSE, STRING, DISPLAY, EQEQ, NUMBER}
+2)  ignore -> ' \t'
+3)  ignore_comment -> r'\#.*'
+4)  literals -> {':'}
+5)  #DISPLAY -> r"DISPLAY"
+6)  IMAGES -> r'images'
+7)  IF -> r'if'
+8)  THEN -> r'then'
+9)  ELSE -> r'else'
+10) EQEQ -> r'=='
+11) value -> IMAGES:ANIMAL
 ----------------------------------------------------
 
 Test Cases:
 ----------------------------------------------------
-
-
+1)images:cat
+    expected output 4 legs
+    expected output image of cat
+2)images:horse
+    expected output 4 legs
+    expected output image of horse
+3)images:dog
+    expected output 4 legs
+    expected output image of dog
+4)images:lion
+    expected output 4 legs
+    expected output image of lion
+5)images:bee
+    expected output 6 legs
+    expected output image of bee
+6)images:rooster
+    expected output 2 legs
+    expected output image of rooster
+7)images:bear
+    expected output 4 legs
+    expected output image of bear
+8)if cat == 4 then display \"true\" else display \"false\"
+    expected output true
+9)if cat == 5 then display \"true\" else display \"false\"
+    expected output false
+10)#if cat == 4 then display \"true\" else display \"false\"
+    expected output
+    (nothing should print)
 ----------------------------------------------------

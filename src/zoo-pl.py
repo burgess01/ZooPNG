@@ -131,21 +131,5 @@ class ZooParser(Parser):
 if __name__ == '__main__':
     lexer = ZooLexer()
     parser = ZooParser()
-    #parser.parse(lexer.tokenize("images : cat"))
+    parser.parse(lexer.tokenize("images : cat"))
     parser.parse(lexer.tokenize("if cat == 4 then display \"true\" else display \"false\""))
-
-    '''
-    while True:
-        try:
-            text = input('Animals> ')
-        except EOFError:
-            break
-        if text: 
-            lex = lexer.tokenize(text)
-            #for token in lex:
-                #   print(token)
-            parser.parse(lex)
-    '''
-    
-
-            

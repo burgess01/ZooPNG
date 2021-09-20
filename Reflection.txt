@@ -1,8 +1,24 @@
 Add your reflection in the space provided below:
 -----
-
+Anthony:
 One of the biggest challenges I had thus far with the lab was the understanding the syntax and semantics
 of the code. We ran into many errors as a result. Although, each error was a learning experience and we often had to use external
 references such as stack overflow for answers. Another challenge we had as a group was communication. We quickly recognized that we were not communicating
 appropriate times to meet with to work on the code and of the program itself. We ressolved this and learned 
 that it is vital that everyone in the group is on the same page.
+
+Katie:
+The hardest part of this lab for me was understanding a lot of the syntax of the lab. I understood the underlying logic,
+but being able to put that into actual code was challenging for me. Once I was able to get the hang of it and understand
+it after our meeting with you I felt a lot better about continuing to work on the code with the group and on my own. I
+also thought it was interesting to learn that image files added over VSCode liveshare are automatically corrupted. There
+were also some issues with communication, but that was quickly solved after some discussion.
+
+Gary: 
+During this lab session the most trouble we ran into is probally going to be communication issues. 
+During this lab session we made plans, but due to us being uncorrenated, we did not meet often. Overall 
+this has been a experience to remember because I now know the importance of knowing your teamates schedules.
+To solve this issue, we decided to post our schedules in slack. So we can plan our next move. In terms of coding errors
+we ran into plenty. Most of the problems were solved due to stack overflow (as a resource). 
+
+
