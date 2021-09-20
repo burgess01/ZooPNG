@@ -1,2 +1,8 @@
 Add your reflection in the space provided below:
 -----
+
+One of the biggest challenges I had thus far with the lab was the understanding the syntax and semantics
+of the code. We ran into many errors as a result. Although, each error was a learning experience and we often had to use external
+references such as stack overflow for answers. Another challenge we had as a group was communication. We quickly recognized that we were not communicating
+appropriate times to meet with to work on the code and of the program itself. We ressolved this and learned 
+that it is vital that everyone in the group is on the same page.
