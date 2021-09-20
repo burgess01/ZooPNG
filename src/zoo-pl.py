@@ -3,7 +3,7 @@ from sly import Lexer, Parser
 from PIL import Image
 
 class ZooLexer(Lexer):
-    tokens = {IMAGES, ANIMAL, IF, THEN, ELSE, DISPLAY, EQEQ}
+    tokens = {IMAGES, ANIMAL, IF, THEN, ELSE, STRING, DISPLAY, EQEQ, NUMBER}
     ignore = ' \t'
     literals = {':'}
     #DISPLAY = r"DISPLAY"
@@ -24,6 +24,7 @@ class ZooLexer(Lexer):
     @_(r"\".*?\"")
     def STRING(self, t):
         t.value = t.value.strip("\"")
+        return t
 
     @_(r'\n+')
     def newline(self, t):
@@ -38,6 +39,13 @@ class ZooParser(Parser):
     #print(tokens)
     def __init__(self):
         pass
+
+    @_('DISPLAY STRING')
+    def statement(self, p):
+        return p[1]
+    @_('NUMBER')
+    def expr(self,p):
+        return('num', p.NUMBER)
     
     @_('IF condition THEN statement ELSE statement')
     def statement(self, p):
@@ -48,20 +56,32 @@ class ZooParser(Parser):
         else: 
             print(p.statement1)
 
-    @_('expr EQEQ expr')
+    @_('ANIMAL EQEQ expr')
     def condition(self, p):
-        if (p.expr0 == p.expr1): 
+        cat = 4
+        dog = 4
+        horse = 4
+        lion = 4
+        bear = 4
+        if (p[0] == "cat" and p.expr[1] == cat):
             return 1
-        else: 
+        if (p[0] == "dog" and p.expr[1] == dog):
+            return 1
+        if (p[0] == "horse" and p.expr[1] == horse):
+            return 1
+        if (p[0] == "lion" and p.expr[1] == lion):
+            return 1
+        if (p[0] == "bear" and p.expr[1] == bear):
+            return 1
+        else:
             return 0
 
     @_('IMAGES ":" ANIMAL')
-    def img_value(self, p):
+    def statement(self, p):
         #print(p[2])
         # displays an image of the animal
         if(p[2] == "cat"):
             print("4 Legs")
-            cat = 4
             im = Image.open(r"../img/cat.jpeg")
             im.show()
             
@@ -86,6 +106,9 @@ class ZooParser(Parser):
 
         elif p[2] == ("bear"):
             print("4 legs")
+    @_('')
+    def statement(self, p):
+        pass
             
 
        
@@ -103,7 +126,7 @@ if __name__ == '__main__':
     lexer = ZooLexer()
     parser = ZooParser()
     #parser.parse(lexer.tokenize("images : cat"))
-    parser.parse(lexer.tokenize("if dog == 4 then display \"true\" else display \"false\""))
+    parser.parse(lexer.tokenize("if cat == 4 then display \"true\" else display \"false\""))
 
     '''
     while True:
