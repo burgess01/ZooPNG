@@ -1,0 +1,13 @@
+				Graded Report File
+			    ===================
+Student Name: Katie Burgess, Anthony Grant-Cook, Gary Chen
+----------------------------------------------------
+I liked how the program setup the animals and the images based on talk-o-talk. However, the additional requirements such as usage of "float" were missing? Because this data type was slightly outside the scope of the program, and for the detailed reflection document, and technical report provided, there is no points deducted. 
+Full points given. In the future, it is recommended to chose an idea and PL that satisfied the key requirements. Discussion with the professor outside the lab time is a great way to communicate and get some additional guidance. Also, to make sure that the program or the project meets all the different requirements.  I appreciate that the team took the efforts to reach out to the Professor through Google Meet before lab submission. Also, you should involve the professor in the idea phase, for example, how can we include float in this zoo pl?
+The answer from the professor is:
+Weight and Height of the animals. For example, a dog can weigh 26.23 and the hieght can 2.4. 
+
+Overall, a very good attempt to develop a new PL. This will be a good base to try to develop a new PL of your own in the future, for example, during the course project!
+
+Total 50/50
+
